@@ -17,7 +17,7 @@ const TodoList = () => {
       </div>
       <div>
         <input type="text" placeholder="✍ write your todo here" value={inputValue} onChange={(event)=>{setInputValue(event.target.value)}}/>
-        <button onClick={()=>dispatch(addTodo(inputValue))}>Add</button>
+        <button onClick={()=>{dispatch(addTodo(inputValue)); setInputValue("")}}>Add</button>
       </div>
     </div>
     <div>

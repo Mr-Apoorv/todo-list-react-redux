@@ -8,14 +8,21 @@ const todoReducer = (state=initialState, action) => {
     switch (action.type) {
         case "ADD_TODO":
 
-        return {
-            // ...state, 
-            list:[...state.list,
-                {id:action.payload.id,
-                    data:action.payload.data,
-                }
-            ]
+        if(action.payload.data.length>2){
+            return {
+                // ...state, 
+                list:[...state.list,
+                    {id:action.payload.id,
+                        data:action.payload.data,
+                    }
+                ]
+            }
         }
+        else{
+            alert("Enter more than 2 char")
+            console.log(action.payload.data.length)
+        }
+       
             
         case "DELETE_TODO":
             const newList=state.list.filter((ele)=>ele.id!==action.payload.data);
@@ -31,7 +38,7 @@ const todoReducer = (state=initialState, action) => {
             
                 return {
                     // ...state, 
-                    list:[]
+                    list:[],
                 }
          
         default: return state
